@@ -1,0 +1,85 @@
+{
+  "disallowedPackages": [
+    {
+      "name": "FluentAssertions",
+      "rules": [
+        {
+          "versionConstraint": ">7.0.0",
+          "environments": [ "development", "test", "production" ],
+          "message": "FluentAssertions must be v7.0.0 or less."
+        }
+      ]
+    },
+    {
+      "name": "DfE.CoreLibs.Testing",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": [ "production" ],
+          "message": "PreRelease versions of DfE.CoreLibs.Testing are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "DfE.CoreLibs.Utilities",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": [ "production" ],
+          "message": "PreRelease versions of DfE.CoreLibs.Utilities are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "DfE.CoreLibs.Caching",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": [ "production" ],
+          "message": "PreRelease versions of DfE.CoreLibs.Caching are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "DfE.CoreLibs.Http",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": [ "production" ],
+          "message": "PreRelease versions of DfE.CoreLibs.Http are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "DfE.CoreLibs.Contracts",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": [ "production" ],
+          "message": "PreRelease versions of DfE.CoreLibs.Contracts are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "DfE.CoreLibs.Security",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": [ "production" ],
+          "message": "PreRelease versions of DfE.CoreLibs.Security are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "DfE.CoreLibs.AsyncProcessing",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": [ "production" ],
+          "message": "PreRelease versions of DfE.CoreLibs.AsyncProcessing are not allowed in production."
+        }
+      ]
+    }
+  ]
+  }
+  
