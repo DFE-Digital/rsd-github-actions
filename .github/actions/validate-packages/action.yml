@@ -1,0 +1,23 @@
+name: "Validate Packages"
+description: "Scans .NET projects for disallowed packages."
+author: "DfE RSD"
+
+inputs:
+  environment:
+    description: "Environment name for validation"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Run Validation Script
+        shell: pwsh
+        run: |
+          $envName = '${{ inputs.environment }}'
+
+          ./.github/actions/validate-packages/validate-packages.ps1 `
+            -Environment $envName `
+            -PolicyFilePath "./.github/actions/validate-packages/packages-policy.json"
