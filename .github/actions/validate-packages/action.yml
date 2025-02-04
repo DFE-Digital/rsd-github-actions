@@ -11,13 +11,13 @@ runs:
   using: "composite"
   steps:
       - name: Check out the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Run Validation Script
         shell: pwsh
         run: |
           $envName = '${{ inputs.environment }}'
 
-          ./.github/actions/validate-packages/validate-packages.ps1 `
+          . "${{ github.action_path }}/validate-packages.ps1" `
             -Environment $envName `
-            -PolicyFilePath "./.github/actions/validate-packages/packages-policy.json"
+            -PolicyFilePath "${{ github.action_path }}/packages-policy.json"
