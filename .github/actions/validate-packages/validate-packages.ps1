@@ -1,4 +1,4 @@
-# File: .github/scripts/validate-packages.ps1
+# File: .github/actions/validate-packages.ps1
 Param(
     [string]$Environment, # "development", "test", or "production"
     [string]$PolicyFilePath
@@ -37,43 +37,43 @@ ForEach ($file in $csprojFiles) {
 
         # Now check against each rule
         ForEach ($packagePolicy in $disallowedPackages) {
+
             if ($packagePolicy.name -eq $packageName) {
 
                 # This package has rules we need to check
                 ForEach ($rule in $packagePolicy.rules) {
 
-                        # Does this rule apply to our envionment?
-                        if ($rule.environments -contains $Environment) {
+                    # Does this rule apply to our envionment?
+                    if ($rule.environments -contains $Environment) {
 
-                            # Check versionConstraint
-                            if ($rule.PSObject.Properties.Name -contains 'versionConstraint') {
-                                $constraint = $rule.versionConstraint
+                        # Check versionConstraint
+                        if ($rule.PSObject.Properties.Name -contains 'versionConstraint') {
+                            $constraint = $rule.versionConstraint
 
-                                $minVersionMatch = $constraint -match "(\d+\.?\d*\.?\d*)"
+                            $minVersionMatch = $constraint -match "(\d+\.?\d*\.?\d*)"
 
-                                if ($constraint.StartsWith("<")) {
-                                    $ruleVersion = $Matches[1]
+                            if ($constraint.StartsWith("<")) {
+                                $ruleVersion = $Matches[1]
 
-                                    $parsedRuleVersion = [Version]$ruleVersion
-                                    $parsedPackageVersion = [Version]$packageVersion
-                                    
-                                    if ($parsedPackageVersion -lt $parsedRuleVersion) {
-                                        $errors += "$($file.FullName): Package $($packageName) version $($packageVersion) violates rule: $($rule.message)"
-                                    }
-                                } elseif ($constraint.StartsWith(">")) {
-                                    $ruleVersion = $Matches[1]
-
-                                    $parsedRuleVersion = [Version]$ruleVersion
-                                    $parsedPackageVersion = [Version]$packageVersion
-                                    
-                                    if ($parsedPackageVersion -gt $parsedRuleVersion) {
-                                        $errors += "$($file.FullName): Package $($packageName) version $($packageVersion) violates rule: $($rule.message)"
-                                    }
+                                $parsedRuleVersion = [Version]$ruleVersion
+                                $parsedPackageVersion = [Version]$packageVersion
+                                
+                                if ($parsedPackageVersion -lt $parsedRuleVersion) {
+                                    $errors += "$($file.FullName): Package $($packageName) version $($packageVersion) violates rule: $($rule.message)"
                                 }
+                            } elseif ($constraint.StartsWith(">")) {
+                                $ruleVersion = $Matches[1]
 
+                                $parsedRuleVersion = [Version]$ruleVersion
+                                $parsedPackageVersion = [Version]$packageVersion
+                                
+                                if ($parsedPackageVersion -gt $parsedRuleVersion) {
+                                    $errors += "$($file.FullName): Package $($packageName) version $($packageVersion) violates rule: $($rule.message)"
+                                }
                             }
-                        }
 
+                        }
+                        
                         # Check versionRegex, 
                         if ($rule.PSObject.Properties.Name -contains 'versionRegex') {
                             $regex = $rule.versionRegex
@@ -85,6 +85,7 @@ ForEach ($file in $csprojFiles) {
                 }
             }
         }
+    }
 }
 
 
