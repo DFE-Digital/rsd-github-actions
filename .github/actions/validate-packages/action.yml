@@ -10,6 +10,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+      - name: Configure Git for long paths
+        run: git config --system core.longpaths true
+      
       - name: Check out the repository
         uses: actions/checkout@v4
 
