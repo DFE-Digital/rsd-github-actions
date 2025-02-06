@@ -11,6 +11,7 @@ runs:
   using: "composite"
   steps:
       - name: Configure Git for long paths
+        shell: bash
         run: git config --system core.longpaths true
       
       - name: Check out the repository
