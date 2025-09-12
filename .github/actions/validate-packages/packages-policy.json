@@ -11,72 +11,102 @@
       ]
     },
     {
-      "name": "DfE.CoreLibs.Testing",
+      "nameRegex": "^(?i)DfE\\.CoreLibs\\..*$",
       "rules": [
         {
-          "versionRegex": "-prerelease",
-          "environments": [ "production" ],
-          "message": "PreRelease versions of DfE.CoreLibs.Testing are not allowed in production."
+          "environments": [ "production", "development", "test" ],
+          "versionRegex": ".*",
+          "message": "DfE.CoreLibs.* packages are deprecated, please use GovUK.Dfe.CoreLibs.* packages on nuget.org."
         }
       ]
     },
     {
-      "name": "DfE.CoreLibs.Utilities",
+      "name": "GovUK.Dfe.CoreLibs.Testing",
       "rules": [
         {
           "versionRegex": "-prerelease",
           "environments": [ "production" ],
-          "message": "PreRelease versions of DfE.CoreLibs.Utilities are not allowed in production."
+          "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Testing are not allowed in production."
         }
       ]
     },
     {
-      "name": "DfE.CoreLibs.Caching",
+      "name": "GovUK.Dfe.CoreLibs.Utilities",
       "rules": [
         {
           "versionRegex": "-prerelease",
           "environments": [ "production" ],
-          "message": "PreRelease versions of DfE.CoreLibs.Caching are not allowed in production."
+          "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Utilities are not allowed in production."
         }
       ]
     },
     {
-      "name": "DfE.CoreLibs.Http",
+      "name": "GovUK.Dfe.CoreLibs.Caching",
       "rules": [
         {
           "versionRegex": "-prerelease",
           "environments": [ "production" ],
-          "message": "PreRelease versions of DfE.CoreLibs.Http are not allowed in production."
+          "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Caching are not allowed in production."
         }
       ]
     },
     {
-      "name": "DfE.CoreLibs.Contracts",
+      "name": "GovUK.Dfe.CoreLibs.Http",
       "rules": [
         {
           "versionRegex": "-prerelease",
           "environments": [ "production" ],
-          "message": "PreRelease versions of DfE.CoreLibs.Contracts are not allowed in production."
+          "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Http are not allowed in production."
         }
       ]
     },
     {
-      "name": "DfE.CoreLibs.Security",
+      "name": "GovUK.Dfe.CoreLibs.Contracts",
       "rules": [
         {
           "versionRegex": "-prerelease",
           "environments": [ "production" ],
-          "message": "PreRelease versions of DfE.CoreLibs.Security are not allowed in production."
+          "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Contracts are not allowed in production."
         }
       ]
     },
     {
-      "name": "DfE.CoreLibs.AsyncProcessing",
+      "name": "GovUK.Dfe.CoreLibs.Security",
       "rules": [
         {
           "versionRegex": "-prerelease",
           "environments": [ "production" ],
-          "message": "PreRelease versions of DfE.CoreLibs.AsyncProcessing are not allowed in production."
+          "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Security are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "GovUK.Dfe.CoreLibs.AsyncProcessing",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": [ "production" ],
+          "message": "PreRelease versions of GovUK.Dfe.CoreLibs.AsyncProcessing are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "GovUK.Dfe.CoreLibs.Notifications",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": [ "production" ],
+          "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Notifications are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "GovUK.Dfe.CoreLibs.FileStorage",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": [ "production" ],
+          "message": "PreRelease versions of GovUK.Dfe.CoreLibs.FileStorage are not allowed in production."
         }
       ]
     }
