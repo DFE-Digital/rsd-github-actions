@@ -1,3 +1,61 @@
 # rsd-github-actions
 
-This repository serves as a single point of reference for all our GitHub Actions and workflows in RSD. By consolidating them here, we ensure consistency, maintain version control of critical automation scripts, and streamline CI/CD processes across our projects. This makes it easier to reuse, update, and collaborate on workflows.
+Central repository for shared GitHub Actions and workflows used across RSD projects.
+
+## Consuming actions
+
+Reference actions with the **floating major version tag** so downstream repos automatically pick up new `v1.x.x` releases:
+
+```yaml
+- name: Validate Packages
+  uses: DFE-Digital/rsd-github-actions/.github/actions/validate-packages@v1
+  with:
+    environment: ${{ needs.set-env.outputs.environment }}
+```
+
+GitHub Actions does not support wildcard refs such as `@v1.*`. The `@v1` tag is maintained automatically and always points at the latest `v1.x.x` release.
+
+When a **major version** changes (for example `v2.0.0`), downstream repos must update their reference manually (for example from `@v1` to `@v2`).
+
+## Releasing a new version
+
+1. Merge your changes to `main` via pull request (see [Governance](#governance) below).
+2. Create and push an immutable semver tag:
+
+   ```bash
+   git tag v1.2.0
+   git push origin v1.2.0
+   ```
+
+3. The [Release workflow](.github/workflows/release.yml) will:
+   - Validate the tag format (`vMAJOR.MINOR.PATCH`)
+   - Move the floating `v1` tag to the new release (for all `v1.x.x` tags)
+   - Publish a GitHub Release with generated release notes
+
+### First-time bootstrap
+
+If the floating `v1` tag does not exist yet, push any `v1.x.x` tag (or re-run the Release workflow for an existing tag) to create it.
+
+## Governance
+
+Changes to `main` are protected by a repository ruleset that requires:
+
+- Pull requests (no direct pushes to `main`)
+- At least one approving review
+- Approval from a [code owner](.github/CODEOWNERS)
+
+The ruleset is defined in [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json) and applied by the [Apply Repository Ruleset workflow](.github/workflows/apply-repository-ruleset.yml).
+
+### Setup after merging these changes
+
+1. **Update CODEOWNERS** — edit [`.github/CODEOWNERS`](.github/CODEOWNERS) and set the correct GitHub username(s) or team(s). See the comments in that file for the valid formats.
+2. **Add admin token secret** — a repository admin creates a fine-grained PAT with **Administration: Read and write** for this repository, then adds it as a secret named `RULESET_ADMIN_TOKEN` under **Settings → Secrets and variables → Actions**.
+3. **Apply the ruleset** — run **Actions → Apply Repository Ruleset → Run workflow** once (it also runs automatically when ruleset files change on `main`).
+
+If you prefer not to store a PAT, a repository admin can create the same ruleset manually in **Settings → Rules → Rulesets** using [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json) as a reference.
+
+## Actions
+
+| Action | Description |
+|--------|-------------|
+| [validate-packages](.github/actions/validate-packages/) | Validates .NET package references against a central policy |

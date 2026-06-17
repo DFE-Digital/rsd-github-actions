@@ -1,0 +1,10 @@
+# Require review from a code owner before changes can merge to main.
+#
+# Use one of these formats:
+#   Individual:  * @github-username
+#   Team:        * @DFE-Digital/team-slug   (team must exist and have repo access)
+#
+# To find teams: GitHub → DFE-Digital org → Teams
+# Teams used in CODEOWNERS must be visible to this repository (not secret-only
+# unless the repo is explicitly granted access to that team).
+* @FrostyApeOne
