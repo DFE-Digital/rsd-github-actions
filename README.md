@@ -49,10 +49,10 @@ The ruleset is defined in [`.github/rulesets/main-protection.json`](.github/rule
 ### Setup after merging these changes
 
 1. **Update CODEOWNERS** — edit [`.github/CODEOWNERS`](.github/CODEOWNERS) and set the correct GitHub username(s) or team(s). See the comments in that file for the valid formats.
-2. **Apply the ruleset** — a repository admin runs **Actions → Apply Repository Ruleset → Run workflow** once (it also runs automatically when ruleset files change on `main`).
-3. **Allow workflow administration permissions** — in **Settings → Actions → General → Workflow permissions**, ensure workflows can use `administration: write` (required for the ruleset workflow).
+2. **Add admin token secret** — a repository admin creates a fine-grained PAT with **Administration: Read and write** for this repository, then adds it as a secret named `RULESET_ADMIN_TOKEN` under **Settings → Secrets and variables → Actions**.
+3. **Apply the ruleset** — run **Actions → Apply Repository Ruleset → Run workflow** once (it also runs automatically when ruleset files change on `main`).
 
-If the ruleset workflow cannot obtain sufficient permissions, a repository admin can create the same ruleset manually in **Settings → Rules → Rulesets** using the JSON file as a reference.
+If you prefer not to store a PAT, a repository admin can create the same ruleset manually in **Settings → Rules → Rulesets** using [`.github/rulesets/main-protection.json`](.github/rulesets/main-protection.json) as a reference.
 
 ## Actions
 
