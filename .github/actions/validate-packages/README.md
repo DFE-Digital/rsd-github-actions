@@ -30,7 +30,7 @@ In your GitHub Actions workflow (for example, `.github/workflows/deploy.yml`), a
         needs: [ set-env ]           # or any prerequisite job
         steps:
           - name: Validate Packages
-            uses: DFE-Digital/rsd-github-actions/.github/actions/validate-packages@v1.1.1
+            uses: DFE-Digital/rsd-github-actions/.github/actions/validate-packages@v1
             with:
               environment: ${{ needs.set-env.outputs.environment }}
     
@@ -39,9 +39,11 @@ In your GitHub Actions workflow (for example, `.github/workflows/deploy.yml`), a
 
 1.  `runs-on: windows-latest`  
     The script uses PowerShell features that require Windows.
-2.  **environment input**  
+2.  **Use `@v1` for automatic updates**  
+    Reference `@v1` to always use the latest `v1.x.x` release. Update to `@v2` only when a new major version is published.
+3.  **environment input**  
     Lets the validator know if you’re in _development_, _test_, or _production_, so it can apply the relevant policy rules.
-3.  **Blocking Violations**  
+4.  **Blocking Violations**  
     If any disallowed package usage is found, the job fails and stops the pipeline.
 
 * * *
