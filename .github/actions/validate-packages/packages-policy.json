@@ -1,12 +1,42 @@
 {
   "disallowedPackages": [
     {
+      "name": "MassTransit",
+      "rules": [
+        {
+          "versionConstraint": ">8.5.10",
+          "environments": [ "development", "test", "production" ],
+          "message": "MassTransit must be v8.5.10 or less."
+        }
+      ]
+    },
+    {
+      "name": "AutoMapper",
+      "rules": [
+        {
+          "versionConstraint": ">14.0.0",
+          "environments": [ "development", "test", "production" ],
+          "message": "AutoMapper must be v14.0.0 or less."
+        }
+      ]
+    },
+    {
       "name": "FluentAssertions",
       "rules": [
         {
-          "versionConstraint": ">7.0.0",
+          "versionConstraint": ">7.2.2",
           "environments": [ "development", "test", "production" ],
-          "message": "FluentAssertions must be v7.0.0 or less."
+          "message": "FluentAssertions must be v7.2.2 or less."
+        }
+      ]
+    },
+    {
+      "name": "MediatR",
+      "rules": [
+        {
+          "versionConstraint": ">12.5.0",
+          "environments": [ "development", "test", "production" ],
+          "message": "MediatR must be v12.5.0 or less."
         }
       ]
     },
