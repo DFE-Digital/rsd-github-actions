@@ -1,0 +1,54 @@
+name: Apply Repository Ruleset
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/rulesets/**"
+      - ".github/workflows/apply-repository-ruleset.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  apply-ruleset:
+    name: Apply main branch protection ruleset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Apply ruleset from configuration
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.RULESET_ADMIN_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::Repository secret RULESET_ADMIN_TOKEN is not configured."
+            echo "Create a fine-grained PAT with Administration read/write for this repo,"
+            echo "then add it under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+
+          RULESET_FILE=".github/rulesets/main-protection.json"
+          RULESET_NAME="$(jq -r '.name' "$RULESET_FILE")"
+          EXISTING_ID="$(gh api "repos/${GITHUB_REPOSITORY}/rulesets" --paginate \
+            --jq ".[] | select(.name == \"${RULESET_NAME}\") | .id" | head -n 1)"
+
+          if [ -n "$EXISTING_ID" ]; then
+            echo "Updating existing ruleset '${RULESET_NAME}' (id: ${EXISTING_ID})."
+            gh api \
+              --method PUT \
+              "repos/${GITHUB_REPOSITORY}/rulesets/${EXISTING_ID}" \
+              --input "$RULESET_FILE"
+          else
+            echo "Creating ruleset '${RULESET_NAME}'."
+            gh api \
+              --method POST \
+              "repos/${GITHUB_REPOSITORY}/rulesets" \
+              --input "$RULESET_FILE"
+          fi
