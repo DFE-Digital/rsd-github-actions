@@ -1,3 +1,10 @@
-# Require review from code owners before changes to this repository can merge to main.
-# Update the team handle below if your owning team name differs.
-* @DFE-Digital/rsd-admins
+# Require review from a code owner before changes can merge to main.
+#
+# Use one of these formats:
+#   Individual:  * @github-username
+#   Team:        * @DFE-Digital/team-slug   (team must exist and have repo access)
+#
+# To find teams: GitHub → DFE-Digital org → Teams
+# Teams used in CODEOWNERS must be visible to this repository (not secret-only
+# unless the repo is explicitly granted access to that team).
+* @FrostyApeOne
