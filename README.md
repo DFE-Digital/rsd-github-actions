@@ -48,7 +48,7 @@ The ruleset is defined in [`.github/rulesets/main-protection.json`](.github/rule
 
 ### Setup after merging these changes
 
-1. **Update CODEOWNERS** — edit [`.github/CODEOWNERS`](.github/CODEOWNERS) and replace `@DFE-Digital/rsd-admins` with the GitHub team that owns this repository.
+1. **Update CODEOWNERS** — edit [`.github/CODEOWNERS`](.github/CODEOWNERS) and set the correct GitHub username(s) or team(s). See the comments in that file for the valid formats.
 2. **Apply the ruleset** — a repository admin runs **Actions → Apply Repository Ruleset → Run workflow** once (it also runs automatically when ruleset files change on `main`).
 3. **Allow workflow administration permissions** — in **Settings → Actions → General → Workflow permissions**, ensure workflows can use `administration: write` (required for the ruleset workflow).
 
