@@ -5,7 +5,7 @@
       "rules": [
         {
           "versionConstraint": ">8.5.10",
-          "environments": [ "development", "test", "production" ],
+          "environments": ["development", "test", "production"],
           "message": "MassTransit must be v8.5.10 or less."
         }
       ]
@@ -15,7 +15,7 @@
       "rules": [
         {
           "versionConstraint": ">14.0.0",
-          "environments": [ "development", "test", "production" ],
+          "environments": ["development", "test", "production"],
           "message": "AutoMapper must be v14.0.0 or less."
         }
       ]
@@ -25,7 +25,7 @@
       "rules": [
         {
           "versionConstraint": ">7.2.2",
-          "environments": [ "development", "test", "production" ],
+          "environments": ["development", "test", "production"],
           "message": "FluentAssertions must be v7.2.2 or less."
         }
       ]
@@ -35,7 +35,7 @@
       "rules": [
         {
           "versionConstraint": ">12.5.0",
-          "environments": [ "development", "test", "production" ],
+          "environments": ["development", "test", "production"],
           "message": "MediatR must be v12.5.0 or less."
         }
       ]
@@ -44,7 +44,7 @@
       "nameRegex": "^(?i)DfE\\.CoreLibs\\..*$",
       "rules": [
         {
-          "environments": [ "production", "development", "test" ],
+          "environments": ["production", "development", "test"],
           "versionRegex": ".*",
           "message": "DfE.CoreLibs.* packages are deprecated, please use GovUK.Dfe.CoreLibs.* packages on nuget.org."
         }
@@ -55,7 +55,7 @@
       "rules": [
         {
           "versionRegex": "-prerelease",
-          "environments": [ "production" ],
+          "environments": ["production"],
           "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Testing are not allowed in production."
         }
       ]
@@ -65,7 +65,7 @@
       "rules": [
         {
           "versionRegex": "-prerelease",
-          "environments": [ "production" ],
+          "environments": ["production"],
           "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Utilities are not allowed in production."
         }
       ]
@@ -75,7 +75,7 @@
       "rules": [
         {
           "versionRegex": "-prerelease",
-          "environments": [ "production" ],
+          "environments": ["production"],
           "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Caching are not allowed in production."
         }
       ]
@@ -85,7 +85,7 @@
       "rules": [
         {
           "versionRegex": "-prerelease",
-          "environments": [ "production" ],
+          "environments": ["production"],
           "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Http are not allowed in production."
         }
       ]
@@ -95,7 +95,7 @@
       "rules": [
         {
           "versionRegex": "-prerelease",
-          "environments": [ "production" ],
+          "environments": ["production"],
           "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Contracts are not allowed in production."
         }
       ]
@@ -105,7 +105,7 @@
       "rules": [
         {
           "versionRegex": "-prerelease",
-          "environments": [ "production" ],
+          "environments": ["production"],
           "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Security are not allowed in production."
         }
       ]
@@ -115,7 +115,7 @@
       "rules": [
         {
           "versionRegex": "-prerelease",
-          "environments": [ "production" ],
+          "environments": ["production"],
           "message": "PreRelease versions of GovUK.Dfe.CoreLibs.AsyncProcessing are not allowed in production."
         }
       ]
@@ -125,7 +125,7 @@
       "rules": [
         {
           "versionRegex": "-prerelease",
-          "environments": [ "production" ],
+          "environments": ["production"],
           "message": "PreRelease versions of GovUK.Dfe.CoreLibs.Notifications are not allowed in production."
         }
       ]
@@ -135,11 +135,10 @@
       "rules": [
         {
           "versionRegex": "-prerelease",
-          "environments": [ "production" ],
+          "environments": ["production"],
           "message": "PreRelease versions of GovUK.Dfe.CoreLibs.FileStorage are not allowed in production."
         }
       ]
     }
   ]
-  }
-  
+}

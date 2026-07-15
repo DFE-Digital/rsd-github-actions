@@ -58,4 +58,4 @@ If you prefer not to store a PAT, a repository admin can create the same ruleset
 
 | Action | Description |
 |--------|-------------|
-| [validate-packages](.github/actions/validate-packages/) | Validates .NET package references against a central policy |
+| [validate-packages](.github/actions/validate-packages/) | Validates .NET package references and licenses against a central policy |
