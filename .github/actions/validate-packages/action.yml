@@ -1,5 +1,5 @@
 name: "Validate Packages"
-description: "Scans .NET projects for disallowed packages."
+description: "Scans .NET projects for disallowed packages and package licenses."
 author: "DfE RSD"
 
 inputs:
@@ -17,7 +17,22 @@ runs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      - name: Run Validation Script
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+
+      - name: Restore dependencies
+        shell: pwsh
+        env:
+          DOTNET_ROLL_FORWARD: Major
+        run: dotnet restore
+
+      - name: Install license tool
+        shell: pwsh
+        run: dotnet tool install --global nuget-license
+
+      - name: Run package policy validation
         shell: pwsh
         run: |
           $envName = '${{ inputs.environment }}'
@@ -25,3 +40,14 @@ runs:
           . "${{ github.action_path }}/validate-packages.ps1" `
             -Environment $envName `
             -PolicyFilePath "${{ github.action_path }}/packages-policy.json"
+
+      - name: Run license validation
+        shell: pwsh
+        env:
+          DOTNET_ROLL_FORWARD: Major
+        run: |
+          $envName = '${{ inputs.environment }}'
+
+          . "${{ github.action_path }}/validate-licenses.ps1" `
+            -Environment $envName `
+            -PolicyFilePath "${{ github.action_path }}/licenses-policy.json"
