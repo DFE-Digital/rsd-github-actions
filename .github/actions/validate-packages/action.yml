@@ -33,7 +33,10 @@ runs:
         shell: pwsh
         env:
           DOTNET_ROLL_FORWARD: Major
-        run: dotnet restore
+        run: |
+          $slnFile = Get-ChildItem -Path . -Filter *.sln -Recurse | Select-Object -First 1
+          if (-not $slnFile) { throw "No .sln file found" }
+          dotnet restore $slnFile.FullName
 
       - name: Install license tool
         shell: pwsh
