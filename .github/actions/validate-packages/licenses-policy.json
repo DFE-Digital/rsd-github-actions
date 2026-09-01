@@ -39,6 +39,9 @@
     { "name": "TinyMapper", "version": "3.0.3", "reason": "Reviewed and approved for use at this version. MIT (metadata is a GitHub LICENSE URL)." },
     { "name": "xunit.abstractions", "version": "2.0.1", "reason": "Reviewed and approved for use at this version. Apache-2.0 (metadata is a license URL)." },
     { "name": "xunit.abstractions", "version": "2.0.3", "reason": "Reviewed and approved for use at this version. Apache-2.0 (metadata is a license URL)." },
-    { "name": "xunit.extensibility.core", "version": "2.2.0", "reason": "Reviewed and approved for use at this version." }
+    { "name": "xunit.extensibility.core", "version": "2.2.0", "reason": "Reviewed and approved for use at this version." },
+    { "name": "NetArchTest.Rules", "version": "1.3.2", "reason": "Reviewed and approved for use at this version. MIT (metadata is a GitHub LICENSE URL)." },
+    { "name": "Mono.Cecil", "version": "0.11.3", "reason": "Reviewed and approved for use at this version. MIT (metadata is a GitHub LICENSE URL)." }
+
   ]
 }
