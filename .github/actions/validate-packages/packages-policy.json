@@ -139,6 +139,56 @@
           "message": "PreRelease versions of GovUK.Dfe.CoreLibs.FileStorage are not allowed in production."
         }
       ]
+    },
+    {
+      "name": "GovUK.Dfe.AI.Agents",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": ["production"],
+          "message": "PreRelease versions of GovUK.Dfe.AI.Agents are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "GovUK.Dfe.AI.Agents.AISearch",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": ["production"],
+          "message": "PreRelease versions of GovUK.Dfe.AI.Agents.AISearch are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "GovUK.Dfe.AI.Agents.Mcp",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": ["production"],
+          "message": "PreRelease versions of GovUK.Dfe.AI.Agents.Mcp are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "GovUK.Dfe.AI.Agents.Evaluation",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": ["production"],
+          "message": "PreRelease versions of GovUK.Dfe.AI.Agents.Evaluation are not allowed in production."
+        }
+      ]
+    },
+    {
+      "name": "GovUK.Dfe.AI.Agents.Guardrails",
+      "rules": [
+        {
+          "versionRegex": "-prerelease",
+          "environments": ["production"],
+          "message": "PreRelease versions of GovUK.Dfe.AI.Agents.Guardrails are not allowed in production."
+        }
+      ]
     }
   ]
 }
